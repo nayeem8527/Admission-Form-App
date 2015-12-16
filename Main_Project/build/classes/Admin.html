@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Admin</title>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+  	<script>
+	$(document).ready(function() {
+    	$('#admin').bootstrapValidator({
+        	framework: 'bootstrap',
+        	feedbackIcons: {
+            	valid: 'glyphicon glyphicon-ok',
+            	invalid: 'glyphicon glyphicon-remove',
+           		validating: 'glyphicon glyphicon-refresh'
+        	},
+        	fields: {
+        		gs: {
+                    row: '.gatescore',
+                    validators: {
+                        regexp: {
+                            regexp: /^[0-9\s]+$/,
+                            message: 'Gate Score must be numeric'
+                        },
+        				between: {
+            				min : 0,
+            				max : 1000,
+            				message : 'Gate Score must be between 0 and 1000'
+            			}
+                    }
+                },
+                xp: {
+                    row: '.tenth',
+                    validators: {
+                        regexp: {
+                            regexp: /^[0-9\s]+$/,
+                            message: 'Tenth Percentage must be numeric'
+                        },
+        				between: {
+            				min : 0,
+            				max : 100,
+            				message : 'Tenth Percentage must be between 0 and 100'
+            			}
+                    }
+                },
+                xiip: {
+                    row: '.twelth',
+                    validators: {
+                        regexp: {
+                            regexp: /^[0-9\s]+$/,
+                            message: 'Twelth Percentage must be numeric'
+                        },
+        				between: {
+            				min : 0,
+            				max : 100,
+            				message : 'Twelth Percentage must be between 0 and 100'
+            			}
+                    }
+                },
+                gp: {
+                    row: '.grad',
+                    validators: {
+                        regexp: {
+                            regexp: /^[0-9\s]+$/,
+                            message: 'Graduation Percentage must be numeric'
+                        },
+        				between: {
+            				min : 0,
+            				max : 100,
+            				message : 'Graduation Percentage must be between 0 and 100'
+            			}
+                    }
+                },
+                pgp: {
+                    row: '.postgrad',
+                    validators: {
+                        regexp: {
+                            regexp: /^[0-9\s]+$/,
+                            message: 'Post Graduation Percentage must be numeric'
+                        },
+        				between: {
+            				min : 0,
+            				max : 100,
+            				message : 'Post Graduation Percentage must be between 0 and 100'
+            			}
+                    }
+                },
+                dob: {
+                	validators: {
+                		date: {
+                			format : 'YYYY-MM-DD',
+                			min : '1980-01-01',
+                			max : '1999-12-30',
+                			message : 'The Date is not valid'
+                		}
+                	}
+                },
+                adf: {
+                	validators: {
+                		date: {
+                			format : 'YYYY-MM-DD',
+                			min : '1000-01-01',
+                			max : '2015-12-03',
+                			message : 'The Date is not valid'
+                		}
+                	}
+                },
+                adu: {
+                	validators: {
+                		date: {
+                			format : 'YYYY-MM-DD',
+                			min : '1000-01-01',
+                			max : '2015-12-03',
+                			message : 'The Date is not valid'
+                		}
+                	}
+                }
+        	}
+        });
+	});
+    </script>
+</head>
+
+<body>
+<form id="admin" method="POST">
+	<div class="container">
+		<h2>Admin</h2>
+  		
+		<ul class="nav nav-pills">
+    		<li class="active" color="54BC70"><a data-toggle="pill" href="#pi">Personal Information</a></li>
+   	 		<li><a data-toggle="pill" href="#ei">Educational Information</a></li>
+    		<li><a data-toggle="pill" href="#sub">Submit</a></li>
+		</ul>
+
+		<div class="tab-content">
+    		<div id="pi" class="tab-pane fade in active">
+    			<p></p>
+    			<div class="form-group">
+      				<label for="email">Email :</label>
+      				<input type="text" name="email" class="form-control" id="email">
+    			</div>
+   				<div class="form-group">
+      				<label for="name">Name :</label>
+      				<input type="text" name="nam" class="form-control" id="name">
+    			</div>
+    			<div class="form-group">
+      				<label for="enroll">Enrollment No.:</label>
+      				<input type="text" name="enroll" class="form-control" id="enroll">
+    			</div>                                    
+  				<div class="dropdown">
+  					<label for="cat">Category :</label>
+    				<select name="cat">
+ 						<option value="All">All</option>
+ 						<option value="General">General</option>
+  						<option value="OBC">OBC</option>
+  						<option value="SC">SC</option>
+  						<option value="ST">ST</option>
+					</select>
+  				</div>
+  				<div class="form-group">
+  					<p></p>
+  					<label for="gen">Gender :</label>
+    				<label class="radio-inline">
+   		       		<input type="radio" name="gen" value="Male">Male
+    				</label>
+    				<label class="radio-inline">
+      				<input type="radio" name="gen" value="Female">Female
+    				</label>
+				</div>
+				<div class="form-group">
+  					<label for="pd">Physically Disabled :</label>
+    				<label class="radio-inline">
+   		       		<input type="radio" name="pd" value="Yes">Yes
+    				</label>
+    				<label class="radio-inline">
+      				<input type="radio" name="pd" value="No">No
+    				</label>
+				</div>
+				<div class="form-group">
+  					<label for="dob">Date of Birth :</label>
+    				<label class="radio-inline">
+   		       		<input type="radio" name="dob_option" value="On">On
+    				</label>
+    				<label class="radio-inline">
+      				<input type="radio" name="dob_option" value="Before">Before
+    				</label>
+    				<label class="radio-inline">
+   		       		<input type="radio" name="dob_option" value="After">After
+    				</label>
+    				<p></p>
+    				<input type="text" class="form-control" name="dob" id="dob">
+				</div>
+  			
+   			</div>
+
+    		<div id="ei" class="tab-pane fade">
+    			<p></p>
+    		
+  				<div class="dropdown">
+    				<label for="phds">PhD Stream :</label>
+    				<select name="phds">
+ 						<option value="All">All</option>
+ 						<option value="Computer Science">Computer Science</option>
+  						<option value="Electronics and Communication">Electronics and Communication</option>
+  						<option value="Computational Biology">Computational Biology</option>
+					</select>
+  				</div>
+  				<div class="dropdown">
+  					<p></p>
+  					<label for="gd">Graduation Degree :</label> 
+    				<select name="gd">
+ 						<option value="All">All</option>
+ 						<option value="B.Tech">B.Tech</option>
+  						<option value="B.E">B.E</option>
+  						<option value="B.Sc">B.Sc</option>
+					</select>
+
+  				</div>
+  				<div class="dropdown">
+  					<p></p>
+  					<label for="pgd">Post Graduation Degree :</label>
+  					<select name="pgd">
+ 						<option value="All">All</option>
+ 						<option value="M.Tech">M.Tech</option>
+  						<option value="M.Sc">M.Sc</option>
+  						<option value="M.S">M.S</option>
+					</select>
+  				</div>
+  				<div class="dropdown">
+  					<p></p>
+  					<label for="cxb">Class X Board :</label>
+    				<select name="cxb">
+ 						<option value="All">All</option>
+ 						<option value="CBSE">CBSE</option>
+  						<option value="ICSE">ICSE</option>
+					</select>
+  				</div>
+  				<div class="dropdown">
+  					<p></p>
+  					<label for="cxiib">Class XII Board :</label>   
+    				<select name="cxiib">
+ 						<option value="All">All</option>
+ 						<option value="CBSE">CBSE</option>
+  						<option value="ICSE">ICSE</option>
+					</select>
+  				</div>
+  				<div class="dropdown">
+  					<p></p>
+  					<label for="dg">Department (Graduation) :</label>
+  					<select name="dg">   
+ 						<option value="All">All</option>
+ 						<option value="CSE">CSE</option>
+  						<option value="ECE">ECE</option>
+					</select>
+  				</div>
+  				<div class="dropdown">
+  					<p></p>
+  					<label for="dpg">Department (Post Graduation) :</label> 
+    				<select name="dpg">   
+ 						<option value="All">All</option>
+ 						<option value="CSE">CSE</option>
+  						<option value="ECE">ECE</option>
+					</select>
+  				</div>
+  				<div class="form-group">
+  					<p></p>
+      				<label for="ug">University (Graduation from) :</label>
+      				<input type="text" class="form-control" name="ug" id="email">
+    			</div>
+    			<div class="form-group">
+      				<p></p>
+      				<label for="upg">University (Post Graduation from) :</label>
+      				<input type="text" class="form-control" name="upg" id="email">
+    			</div>
+  				<div class="dropdown">
+  					<p></p>
+  					<label for="sg">State (Graduation from):</label> 
+    				<select name="sg">
+      					<option value="All">All</option>
+      					<option value="Andhra Pradesh">Andhra Pradesh</option>
+      					<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+      					<option value="Assam">Assam</option>
+      					<option value="Bihar">Bihar</option>
+      					<option value="Chhattisgarh">Chhattisgarh</option>
+      					<option value="Delhi">Delhi</option>
+      					<option value="">Goa</option>
+      					<option value="">Gujarat</option>
+      					<option value="">Haryana</option>
+      					<option value="">Himachal Pradesh</option>
+      					<option value="">Jammu & Kashmir</option>
+      					<option value="">Jharkhand</option>
+      					<option value="">Karnataka</option>
+      					<option value="">Kerala</option>
+      					<option value="">Madhya Pradesh</option>
+      					<option value="">Maharashtra</option>
+      					<option value="">Manipur</option>
+      					<option value="">Meghalaya</option>
+      					<option value="">Mizoram</option>
+      					<option value="">Nagaland</option>
+      					<option value="">Orissa</option>
+      					<option value="">Punjab</option>
+      					<option value="">Rajasthan</option>
+      					<option value="">Sikkim</option>
+      					<option value="">Tamil Nadu</option>
+      					<option value="">Telangana</option>
+      					<option value="">Tripura</option>
+      					<option value="">Uttar Pradesh</option>
+      					<option value="">Uttarakhand</option>
+      					<option value="">West Bengal</option>				
+    				</select>
+  				</div>
+  				<div class="dropdown">
+  					<p></p>
+  					<label for="spg">State (Post Graduation from):</label>
+    				<select name="spg">
+      					<option value="All">All</option>
+      					<option value="Andhra Pradesh">Andhra Pradesh</option>
+      					<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+      					<option value="Assam">Assam</option>
+      					<option value="Bihar">Bihar</option>
+      					<option value="Chhattisgarh">Chhattisgarh</option>
+      					<option value="Delhi">Delhi</option>
+      					<option value="">Goa</option>
+      					<option value="">Gujarat</option>
+      					<option value="">Haryana</option>
+      					<option value="">Himachal Pradesh</option>
+      					<option value="">Jammu & Kashmir</option>
+      					<option value="">Jharkhand</option>
+      					<option value="">Karnataka</option>
+      					<option value="">Kerala</option>
+      					<option value="">Madhya Pradesh</option>
+      					<option value="">Maharashtra</option>
+      					<option value="">Manipur</option>
+      					<option value="">Meghalaya</option>
+      					<option value="">Mizoram</option>
+      					<option value="">Nagaland</option>
+      					<option value="">Orissa</option>
+      					<option value="">Punjab</option>
+      					<option value="">Rajasthan</option>
+      					<option value="">Sikkim</option>
+      					<option value="">Tamil Nadu</option>
+      					<option value="">Telangana</option>
+      					<option value="">Tripura</option>
+      					<option value="">Uttar Pradesh</option>
+      					<option value="">Uttarakhand</option>
+      					<option value="">West Bengal</option> 				
+    				</select>
+  				</div>
+  				<div class="form-group">
+      				<p></p>
+      				<label for="xp">Class X Board Percentage :</label>
+    		  		<input type="checkbox" name="g1" value="g1">Greater than
+      				<input type="checkbox" name="e1" value="e1">Equals
+      				<input type="checkbox" name="l1" value="l1">Less than
+      				<div class="tenth">
+    					<input type="text" class="form-control" name="xp" id="xp">
+    				</div>
+    			</div>
+    			<div class="form-group">
+      				<p></p>
+      				<label for="xiip">Class XII Board Percentage :</label>
+      				<input type="checkbox" name="g2" value="g2">Greater than
+      				<input type="checkbox" name="e2" value="e2">Equals
+      				<input type="checkbox" name="l2" value="l2">Less than
+      				<div class="twelth">
+    					<input type="text" class="form-control" name="xiip" id="xiip">
+    				</div>
+    			</div>
+    			<div class="form-group">
+      				<p></p>
+      				<label for="gp">Graduation Marks Percentage :</label>
+      				<input type="checkbox" name="g3" value="g3">Greater than
+      				<input type="checkbox" name="e3" value="e3">Equals
+      				<input type="checkbox" name="l3" value="l3">Less than
+      				<div class="grads">
+    					<input type="text" class="form-control" name="gp" id="gp">
+    				</div>
+    			</div>
+    			<div class="form-group">
+      				<p></p>
+      				<label for="pgp">Post Graduation Marks Percentage :</label>
+      				<input type="checkbox" name="g4" value="g4">Greater than
+      				<input type="checkbox" name="e4" value="e4">Equals
+      				<input type="checkbox" name="l4" value="l4">Less than
+      				<div class="postgrad">
+    					<input type="text" class="form-control" name="pgp" id="pgp">
+    				</div>
+    			</div>
+    			<div class="form-group">
+      				<p></p>
+      				<label for="gs">Gate Score :</label>
+      				<input type="checkbox" name="g5" value="g5">Greater than
+      				<input type="checkbox" name="e5" value="e5">Equals
+      				<input type="checkbox" name="l5" value="l5">Less than
+      				<div class="gatescore">
+    					<input type="text" class="form-control" name="gs" id="gs">
+    				</div>
+    			</div>
+  			
+    		</div>
+
+    		<div id="sub" class="tab-pane fade">	
+    				<div class="form-group">
+      					<label for="adf">Application Dated From :</label>
+      					<input type="text" class="form-control" name="adf" id="adf">
+    				</div>
+    				<div class="form-group">
+      					<label for="adu">Application Dated Up To :</label>
+      					<input type="text" class="form-control" name="adu" id="adu">
+    				</div>
+    				<div class="form-group">
+    					<input type='submit' value='Submit'>
+    				</div>
+    		</div>
+    	</div>
+	</div>
+</form>
+</body>
+</html>
